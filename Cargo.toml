@@ -16,6 +16,7 @@ serde_json = "1.0.55"
 libc = "0.2.124"
 ctrlc = { version = "3.0", features = ["termination"] }
 reqwest = { version = "0.11.1", default-features = false, features = ["blocking", "json"] }
+sentry-types = "0.20.0"
 relay-server = { git = "https://github.com/getsentry/relay" }
 relay-config = { git = "https://github.com/getsentry/relay" }
 relay-log = { git = "https://github.com/getsentry/relay" }

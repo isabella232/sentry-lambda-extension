@@ -4,6 +4,7 @@ use reqwest::blocking::Client;
 use reqwest::StatusCode;
 use serde::Deserialize;
 use serde_json::Value;
+use sentry_types::Dsn;
 use std::collections::HashMap;
 use std::env;
 use std::fs;
@@ -11,6 +12,7 @@ use std::io::BufReader;
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::Arc;
 use std::time;
+use std::fmt::Write;
 
 extern crate libc;
 use libc::{raise, SIGTERM};
@@ -25,6 +27,19 @@ fn base_url() -> Result<String, env::VarError> {
         "http://{}/2020-01-01/extension",
         env::var("AWS_LAMBDA_RUNTIME_API")?
     ))
+}
+
+fn upstream_url() -> Option<String> {
+    if let Ok(dsn) = env::var("SENTRY_DSN") {
+        if let Ok(dsn) = dsn.parse::<Dsn>() {
+            let mut buf = format!("{}://{}", dsn.scheme(), dsn.host());
+            if dsn.port() != dsn.scheme().default_port() {
+                write!(&mut buf, ":{}", dsn.port()).ok()?;
+            }
+            return Some(buf);
+        }
+    }
+    None
 }
 
 #[derive(Debug, Deserialize)]
@@ -116,6 +131,7 @@ fn make_config() -> Result<Config> {
     let overrides = OverridableConfig {
         mode: Some("proxy".to_string()),
         shutdown_timeout: Some(SHUTDOWN_TIMEOUT.to_string()),
+        upstream: upstream_url(),
         ..Default::default()
     };
 

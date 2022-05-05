@@ -242,6 +242,7 @@ dependencies = [
  "relay-log",
  "relay-server",
  "reqwest",
+ "sentry-types 0.20.1",
  "serde",
  "serde_json",
 ]
