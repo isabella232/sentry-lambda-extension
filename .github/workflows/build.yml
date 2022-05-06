@@ -16,17 +16,6 @@ jobs:
       - name: Build Binary
         run: |
           scripts/build-in-docker.sh
-          pwd
-          echo "ls ."
-          ls -alh .
-          echo "ls target"
-          ls -alh target
-          echo "ls target/x86_64-unknown-linux-gnu"
-          ls -alh target/x86_64-unknown-linux-gnu/
-          echo "ls target/x86_64-unknown-linux-gnu/release/"
-          ls -alh target/x86_64-unknown-linux-gnu/release/
-          echo "ls target/release"
-          ls -alh target/release
 
       - uses: actions/upload-artifact@v2
         with:

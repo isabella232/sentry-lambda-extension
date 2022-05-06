@@ -19,7 +19,7 @@ echo "Bumping version: ${NEW_VERSION}"
 TOML_FILES="$(git ls-files 'Cargo.toml' | grep -v cabi)"
 perl -pi -e "s/^version = .*\$/version = \"$NEW_VERSION\"/" $TOML_FILES
 
-cargo update -p aws-lambda-extension
+cargo update -p sentry-lambda-extension
 
 CHANGE_DATE="$(date +'%Y-%m-%d' -d '3 years')"
 echo "Bumping Change Date to $CHANGE_DATE"

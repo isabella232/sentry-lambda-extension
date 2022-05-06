@@ -17,7 +17,7 @@ use std::fmt::Write;
 extern crate libc;
 use libc::{raise, SIGTERM};
 
-const EXTENSION_NAME: &str = "aws-lambda-extension";
+const EXTENSION_NAME: &str = "sentry-lambda-extension";
 const EXTENSION_NAME_HEADER: &str = "Lambda-Extension-Name";
 const EXTENSION_ID_HEADER: &str = "Lambda-Extension-Identifier";
 const SHUTDOWN_TIMEOUT: u64 = 2;
