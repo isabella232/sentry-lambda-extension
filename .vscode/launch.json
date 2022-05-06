@@ -12,7 +12,7 @@
                 "args": [
                     "build",
                     "--bin=sentry-lambda-extension",
-                    "--package=aws-lambda-extension"
+                    "--package=sentry-lambda-extension"
                 ],
                 "filter": {
                     "name": "sentry-lambda-extension",
@@ -34,7 +34,7 @@
                     "test",
                     "--no-run",
                     "--bin=sentry-lambda-extension",
-                    "--package=aws-lambda-extension"
+                    "--package=sentry-lambda-extension"
                 ],
                 "filter": {
                     "name": "sentry-lambda-extension",

@@ -1,5 +1,5 @@
 [package]
-name = "aws-lambda-extension"
+name = "sentry-lambda-extension"
 authors = ["Sentry <oss@sentry.io>"]
 description = "AWS Lambda Extension for Sentry"
 homepage = "https://github.com/getsentry/sentry-lambda-extension"
