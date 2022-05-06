@@ -231,23 +231,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d468802bab17cbc0cc575e9b053f41e72aa36bfa6b7f55e3529ffa43161b97fa"
 
 [[package]]
-name = "sentry-lambda-extension"
-version = "0.1.3"
-dependencies = [
- "anyhow",
- "ctrlc",
- "failure",
- "libc",
- "relay-config",
- "relay-log",
- "relay-server",
- "reqwest",
- "sentry-types 0.20.1",
- "serde",
- "serde_json",
-]
-
-[[package]]
 name = "backoff"
 version = "0.1.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2575,7 +2558,7 @@ checksum = "f497285884f3fcff424ffc933e56d7cbca511def0c9831a7f9b5f6153e3cc89b"
 [[package]]
 name = "relay-auth"
 version = "22.4.0"
-source = "git+https://github.com/getsentry/relay#9595e7e9176013d78db2472792f7d32a028154f2"
+source = "git+https://github.com/getsentry/relay#f17b293c83ae1344e046760656ca2bb8f201b4b8"
 dependencies = [
  "base64 0.10.1",
  "chrono",
@@ -2592,7 +2575,7 @@ dependencies = [
 [[package]]
 name = "relay-common"
 version = "22.4.0"
-source = "git+https://github.com/getsentry/relay#9595e7e9176013d78db2472792f7d32a028154f2"
+source = "git+https://github.com/getsentry/relay#f17b293c83ae1344e046760656ca2bb8f201b4b8"
 dependencies = [
  "backoff",
  "chrono",
@@ -2609,20 +2592,9 @@ dependencies = [
 ]
 
 [[package]]
-name = "relay-common-actors"
-version = "22.4.0"
-source = "git+https://github.com/getsentry/relay#9595e7e9176013d78db2472792f7d32a028154f2"
-dependencies = [
- "actix",
- "failure",
- "futures 0.1.31",
- "relay-log",
-]
-
-[[package]]
 name = "relay-config"
 version = "22.4.0"
-source = "git+https://github.com/getsentry/relay#9595e7e9176013d78db2472792f7d32a028154f2"
+source = "git+https://github.com/getsentry/relay#f17b293c83ae1344e046760656ca2bb8f201b4b8"
 dependencies = [
  "failure",
  "human-size",
@@ -2641,7 +2613,7 @@ dependencies = [
 [[package]]
 name = "relay-filter"
 version = "22.4.0"
-source = "git+https://github.com/getsentry/relay#9595e7e9176013d78db2472792f7d32a028154f2"
+source = "git+https://github.com/getsentry/relay#f17b293c83ae1344e046760656ca2bb8f201b4b8"
 dependencies = [
  "globset",
  "ipnetwork",
@@ -2656,7 +2628,7 @@ dependencies = [
 [[package]]
 name = "relay-general"
 version = "22.4.0"
-source = "git+https://github.com/getsentry/relay#9595e7e9176013d78db2472792f7d32a028154f2"
+source = "git+https://github.com/getsentry/relay#f17b293c83ae1344e046760656ca2bb8f201b4b8"
 dependencies = [
  "bytecount",
  "chrono",
@@ -2692,7 +2664,7 @@ dependencies = [
 [[package]]
 name = "relay-general-derive"
 version = "22.4.0"
-source = "git+https://github.com/getsentry/relay#9595e7e9176013d78db2472792f7d32a028154f2"
+source = "git+https://github.com/getsentry/relay#f17b293c83ae1344e046760656ca2bb8f201b4b8"
 dependencies = [
  "proc-macro2 1.0.37",
  "quote 1.0.18",
@@ -2703,7 +2675,7 @@ dependencies = [
 [[package]]
 name = "relay-log"
 version = "22.4.0"
-source = "git+https://github.com/getsentry/relay#9595e7e9176013d78db2472792f7d32a028154f2"
+source = "git+https://github.com/getsentry/relay#f17b293c83ae1344e046760656ca2bb8f201b4b8"
 dependencies = [
  "chrono",
  "console",
@@ -2720,7 +2692,7 @@ dependencies = [
 [[package]]
 name = "relay-metrics"
 version = "22.4.0"
-source = "git+https://github.com/getsentry/relay#9595e7e9176013d78db2472792f7d32a028154f2"
+source = "git+https://github.com/getsentry/relay#f17b293c83ae1344e046760656ca2bb8f201b4b8"
 dependencies = [
  "actix",
  "crc32fast",
@@ -2728,9 +2700,9 @@ dependencies = [
  "float-ord",
  "hash32",
  "relay-common",
- "relay-common-actors",
  "relay-log",
  "relay-statsd",
+ "relay-system",
  "serde",
  "serde_json",
 ]
@@ -2738,7 +2710,7 @@ dependencies = [
 [[package]]
 name = "relay-quotas"
 version = "22.4.0"
-source = "git+https://github.com/getsentry/relay#9595e7e9176013d78db2472792f7d32a028154f2"
+source = "git+https://github.com/getsentry/relay#f17b293c83ae1344e046760656ca2bb8f201b4b8"
 dependencies = [
  "relay-common",
  "serde",
@@ -2748,7 +2720,7 @@ dependencies = [
 [[package]]
 name = "relay-redis"
 version = "22.4.0"
-source = "git+https://github.com/getsentry/relay#9595e7e9176013d78db2472792f7d32a028154f2"
+source = "git+https://github.com/getsentry/relay#f17b293c83ae1344e046760656ca2bb8f201b4b8"
 dependencies = [
  "failure",
  "serde",
@@ -2757,7 +2729,7 @@ dependencies = [
 [[package]]
 name = "relay-sampling"
 version = "22.4.0"
-source = "git+https://github.com/getsentry/relay#9595e7e9176013d78db2472792f7d32a028154f2"
+source = "git+https://github.com/getsentry/relay#f17b293c83ae1344e046760656ca2bb8f201b4b8"
 dependencies = [
  "rand 0.6.5",
  "rand_pcg",
@@ -2773,7 +2745,7 @@ dependencies = [
 [[package]]
 name = "relay-server"
 version = "22.4.0"
-source = "git+https://github.com/getsentry/relay#9595e7e9176013d78db2472792f7d32a028154f2"
+source = "git+https://github.com/getsentry/relay#f17b293c83ae1344e046760656ca2bb8f201b4b8"
 dependencies = [
  "actix",
  "actix-web",
@@ -2797,7 +2769,6 @@ dependencies = [
  "regex",
  "relay-auth",
  "relay-common",
- "relay-common-actors",
  "relay-config",
  "relay-filter",
  "relay-general",
@@ -2807,6 +2778,7 @@ dependencies = [
  "relay-redis",
  "relay-sampling",
  "relay-statsd",
+ "relay-system",
  "reqwest",
  "rmp-serde",
  "serde",
@@ -2823,12 +2795,23 @@ dependencies = [
 [[package]]
 name = "relay-statsd"
 version = "22.4.0"
-source = "git+https://github.com/getsentry/relay#9595e7e9176013d78db2472792f7d32a028154f2"
+source = "git+https://github.com/getsentry/relay#f17b293c83ae1344e046760656ca2bb8f201b4b8"
 dependencies = [
  "cadence",
  "lazy_static",
  "parking_lot 0.10.2",
  "rand 0.7.3",
+ "relay-log",
+]
+
+[[package]]
+name = "relay-system"
+version = "22.4.0"
+source = "git+https://github.com/getsentry/relay#f17b293c83ae1344e046760656ca2bb8f201b4b8"
+dependencies = [
+ "actix",
+ "failure",
+ "futures 0.1.31",
  "relay-log",
 ]
 
@@ -3130,6 +3113,23 @@ dependencies = [
  "findshlibs",
  "lazy_static",
  "sentry-core",
+]
+
+[[package]]
+name = "sentry-lambda-extension"
+version = "0.1.4"
+dependencies = [
+ "anyhow",
+ "ctrlc",
+ "failure",
+ "libc",
+ "relay-config",
+ "relay-log",
+ "relay-server",
+ "reqwest",
+ "sentry-types 0.20.1",
+ "serde",
+ "serde_json",
 ]
 
 [[package]]

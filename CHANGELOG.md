@@ -1,3 +1,17 @@
+## 0.1.4
+
+### Various fixes & improvements
+
+- Fixed extension file name (#9) by @antonpirker
+- fix (#9) by @antonpirker
+- fix (#9) by @antonpirker
+- added debug output (#9) by @antonpirker
+- feat: Parse correct upstream from SENTRY_DSN env (#7) by @sl0thentr0py
+- feat: Add shutdown_timeout to relay overrides (#6) by @sl0thentr0py
+- ref: Remove config file, make overridable config in process (#5) by @sl0thentr0py
+- Add lifecycle management for extension and relay (#4) by @antonpirker
+- First version of sequence diagram (6edb2149) by @antonpirker
+
 ## 0.1.3
 
 ### Various fixes & improvements
