@@ -109,21 +109,6 @@ struct InvocationResult {
     payload: Value,
 }
 
-fn read_result(req_id: String) -> Result<InvocationResult> {
-    let filename = format!("/tmp/{}", req_id);
-    let f = fs::File::open(filename)?;
-    let reader = BufReader::new(f);
-    let res = serde_json::from_reader(reader)?;
-    Ok(res)
-}
-
-fn process_result(req_id: String) {
-    match read_result(req_id) {
-        Ok(InvocationResult { payload }) => println!("Payload: {}", payload),
-        Err(e) => eprintln!("Error processing invocation result: {:?}", e),
-    }
-}
-
 fn make_config() -> Result<Config> {
     let mut config = Config::default();
 
@@ -188,13 +173,8 @@ fn main() -> Result<()> {
     while running.load(Ordering::SeqCst) {
         ensure_relay_is_running(&client, &healthcheck_url)?;
 
-        std::thread::sleep(time::Duration::from_secs(1));
         println!("Waiting for event...");
         let evt = next_event(&client, &response.extension_id);
-
-        if let Some(request) = prev_request {
-            process_result(request)
-        }
 
         match evt {
             Ok(evt) => match evt {
@@ -223,6 +203,8 @@ fn main() -> Result<()> {
                 return Err(err);
             }
         }
+
+        std::thread::sleep(time::Duration::from_secs(1));
     }
 
     Ok(())
