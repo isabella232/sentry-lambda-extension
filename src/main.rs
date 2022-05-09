@@ -203,8 +203,6 @@ fn main() -> Result<()> {
                 return Err(err);
             }
         }
-
-        std::thread::sleep(time::Duration::from_secs(1));
     }
 
     Ok(())
