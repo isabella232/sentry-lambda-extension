@@ -1,3 +1,9 @@
+## 0.1.5
+
+### Various fixes & improvements
+
+- Some cleanup (#10) by @antonpirker
+
 ## 0.1.4
 
 ### Various fixes & improvements
