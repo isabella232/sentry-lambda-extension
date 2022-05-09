@@ -1,3 +1,9 @@
+## 0.1.6
+
+### Various fixes & improvements
+
+- Removed sleep (#11) by @antonpirker
+
 ## 0.1.5
 
 ### Various fixes & improvements
