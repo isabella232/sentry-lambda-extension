@@ -4,7 +4,7 @@ authors = ["Sentry <oss@sentry.io>"]
 description = "AWS Lambda Extension for Sentry"
 homepage = "https://github.com/getsentry/sentry-lambda-extension"
 repository = "https://github.com/getsentry/sentry-lambda-extension"
-version = "0.1.6"
+version = "0.1.7"
 edition = "2021"
 license-file = "LICENSE"
 

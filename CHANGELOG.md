@@ -1,3 +1,11 @@
+## 0.1.7
+
+### Various fixes & improvements
+
+- Enable build on master/PR (#12) by @sl0thentr0py
+- Remove ensure loop (#12) by @sl0thentr0py
+- Cleanup unused stuff (#12) by @sl0thentr0py
+
 ## 0.1.6
 
 ### Various fixes & improvements
