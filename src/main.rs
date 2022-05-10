@@ -127,32 +127,10 @@ fn start_relay() -> Result<()> {
     Ok(())
 }
 
-fn ensure_relay_is_running(
-    client: &reqwest::blocking::Client,
-    healthcheck_url: &str,
-) -> Result<()> {
-    println!("Checking if relay is still running...");
-
-    let res = client.get(healthcheck_url).send();
-    match res {
-        Ok(_) => {
-            println!("Relay running. All good.");
-            Ok(())
-        }
-        Err(_) => {
-            println!("Relay NOT running! Trying to start relay...");
-            start_relay()
-        }
-    }
-}
-
 fn main() -> Result<()> {
-    let config = make_config()?;
-    let relay_url = config.listen_addr().to_string();
-    let healthcheck_url = format!("http://{}/api/relay/healthcheck/ready/", relay_url);
-
     //Register the Lambda extension
     println!("Starting Sentry Lambda Extension...");
+    start_relay()?;
     let client = Client::builder().timeout(None).build()?;
     let response = register(&client)?;
 
@@ -162,7 +140,6 @@ fn main() -> Result<()> {
     ctrlc::set_handler(move || r.store(false, Ordering::SeqCst))?;
 
     while running.load(Ordering::SeqCst) {
-        ensure_relay_is_running(&client, &healthcheck_url)?;
 
         println!("Waiting for event...");
         let evt = next_event(&client, &response.extension_id);
