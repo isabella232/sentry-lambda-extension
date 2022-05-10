@@ -3,12 +3,9 @@ use relay_config::{Config, OverridableConfig};
 use reqwest::blocking::Client;
 use reqwest::StatusCode;
 use serde::Deserialize;
-use serde_json::Value;
 use sentry_types::Dsn;
 use std::collections::HashMap;
 use std::env;
-use std::fs;
-use std::io::BufReader;
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::Arc;
 use std::time;
@@ -104,11 +101,6 @@ fn register(client: &reqwest::blocking::Client) -> Result<RegisterResponse> {
     })
 }
 
-#[derive(Deserialize)]
-struct InvocationResult {
-    payload: Value,
-}
-
 fn make_config() -> Result<Config> {
     let mut config = Config::default();
 
@@ -163,7 +155,6 @@ fn main() -> Result<()> {
     println!("Starting Sentry Lambda Extension...");
     let client = Client::builder().timeout(None).build()?;
     let response = register(&client)?;
-    let mut prev_request: Option<String> = Option::None;
 
     let running = Arc::new(AtomicBool::new(true));
     let r = running.clone();
@@ -184,7 +175,6 @@ fn main() -> Result<()> {
                     ..
                 } => {
                     println!("Invoke event {}; deadline: {}", request_id, deadline_ms);
-                    prev_request = Some(request_id);
                 }
                 NextEventResponse::Shutdown {
                     shutdown_reason, ..
