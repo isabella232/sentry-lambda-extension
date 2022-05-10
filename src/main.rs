@@ -3,12 +3,9 @@ use relay_config::{Config, OverridableConfig};
 use reqwest::blocking::Client;
 use reqwest::StatusCode;
 use serde::Deserialize;
-use serde_json::Value;
 use sentry_types::Dsn;
 use std::collections::HashMap;
 use std::env;
-use std::fs;
-use std::io::BufReader;
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::Arc;
 use std::time;
@@ -104,11 +101,6 @@ fn register(client: &reqwest::blocking::Client) -> Result<RegisterResponse> {
     })
 }
 
-#[derive(Deserialize)]
-struct InvocationResult {
-    payload: Value,
-}
-
 fn make_config() -> Result<Config> {
     let mut config = Config::default();
 
@@ -135,35 +127,12 @@ fn start_relay() -> Result<()> {
     Ok(())
 }
 
-fn ensure_relay_is_running(
-    client: &reqwest::blocking::Client,
-    healthcheck_url: &str,
-) -> Result<()> {
-    println!("Checking if relay is still running...");
-
-    let res = client.get(healthcheck_url).send();
-    match res {
-        Ok(_) => {
-            println!("Relay running. All good.");
-            Ok(())
-        }
-        Err(_) => {
-            println!("Relay NOT running! Trying to start relay...");
-            start_relay()
-        }
-    }
-}
-
 fn main() -> Result<()> {
-    let config = make_config()?;
-    let relay_url = config.listen_addr().to_string();
-    let healthcheck_url = format!("http://{}/api/relay/healthcheck/ready/", relay_url);
-
     //Register the Lambda extension
     println!("Starting Sentry Lambda Extension...");
+    start_relay()?;
     let client = Client::builder().timeout(None).build()?;
     let response = register(&client)?;
-    let mut prev_request: Option<String> = Option::None;
 
     let running = Arc::new(AtomicBool::new(true));
     let r = running.clone();
@@ -171,7 +140,6 @@ fn main() -> Result<()> {
     ctrlc::set_handler(move || r.store(false, Ordering::SeqCst))?;
 
     while running.load(Ordering::SeqCst) {
-        ensure_relay_is_running(&client, &healthcheck_url)?;
 
         println!("Waiting for event...");
         let evt = next_event(&client, &response.extension_id);
@@ -184,7 +152,6 @@ fn main() -> Result<()> {
                     ..
                 } => {
                     println!("Invoke event {}; deadline: {}", request_id, deadline_ms);
-                    prev_request = Some(request_id);
                 }
                 NextEventResponse::Shutdown {
                     shutdown_reason, ..

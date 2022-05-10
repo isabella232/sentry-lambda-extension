@@ -1,4 +1,5 @@
 from flask import Flask, request
+from time import sleep
 
 
 app = Flask(__name__)
@@ -50,6 +51,7 @@ def next_event():
             "shutdownReason": "OOPSIES",
         }
     else:
+        sleep(1)
         data = {
             "eventType": "INVOKE",
             "deadlineMs": 1581512138111,
