@@ -2558,7 +2558,7 @@ checksum = "f497285884f3fcff424ffc933e56d7cbca511def0c9831a7f9b5f6153e3cc89b"
 [[package]]
 name = "relay-auth"
 version = "22.4.0"
-source = "git+https://github.com/getsentry/relay#f17b293c83ae1344e046760656ca2bb8f201b4b8"
+source = "git+https://github.com/getsentry/relay#d8223d8d03ed4764063855eb3480f22684163d92"
 dependencies = [
  "base64 0.10.1",
  "chrono",
@@ -2575,7 +2575,7 @@ dependencies = [
 [[package]]
 name = "relay-common"
 version = "22.4.0"
-source = "git+https://github.com/getsentry/relay#f17b293c83ae1344e046760656ca2bb8f201b4b8"
+source = "git+https://github.com/getsentry/relay#d8223d8d03ed4764063855eb3480f22684163d92"
 dependencies = [
  "backoff",
  "chrono",
@@ -2594,7 +2594,7 @@ dependencies = [
 [[package]]
 name = "relay-config"
 version = "22.4.0"
-source = "git+https://github.com/getsentry/relay#f17b293c83ae1344e046760656ca2bb8f201b4b8"
+source = "git+https://github.com/getsentry/relay#d8223d8d03ed4764063855eb3480f22684163d92"
 dependencies = [
  "failure",
  "human-size",
@@ -2613,7 +2613,7 @@ dependencies = [
 [[package]]
 name = "relay-filter"
 version = "22.4.0"
-source = "git+https://github.com/getsentry/relay#f17b293c83ae1344e046760656ca2bb8f201b4b8"
+source = "git+https://github.com/getsentry/relay#d8223d8d03ed4764063855eb3480f22684163d92"
 dependencies = [
  "globset",
  "ipnetwork",
@@ -2628,7 +2628,7 @@ dependencies = [
 [[package]]
 name = "relay-general"
 version = "22.4.0"
-source = "git+https://github.com/getsentry/relay#f17b293c83ae1344e046760656ca2bb8f201b4b8"
+source = "git+https://github.com/getsentry/relay#d8223d8d03ed4764063855eb3480f22684163d92"
 dependencies = [
  "bytecount",
  "chrono",
@@ -2664,7 +2664,7 @@ dependencies = [
 [[package]]
 name = "relay-general-derive"
 version = "22.4.0"
-source = "git+https://github.com/getsentry/relay#f17b293c83ae1344e046760656ca2bb8f201b4b8"
+source = "git+https://github.com/getsentry/relay#d8223d8d03ed4764063855eb3480f22684163d92"
 dependencies = [
  "proc-macro2 1.0.37",
  "quote 1.0.18",
@@ -2675,7 +2675,7 @@ dependencies = [
 [[package]]
 name = "relay-log"
 version = "22.4.0"
-source = "git+https://github.com/getsentry/relay#f17b293c83ae1344e046760656ca2bb8f201b4b8"
+source = "git+https://github.com/getsentry/relay#d8223d8d03ed4764063855eb3480f22684163d92"
 dependencies = [
  "chrono",
  "console",
@@ -2692,7 +2692,7 @@ dependencies = [
 [[package]]
 name = "relay-metrics"
 version = "22.4.0"
-source = "git+https://github.com/getsentry/relay#f17b293c83ae1344e046760656ca2bb8f201b4b8"
+source = "git+https://github.com/getsentry/relay#d8223d8d03ed4764063855eb3480f22684163d92"
 dependencies = [
  "actix",
  "crc32fast",
@@ -2710,7 +2710,7 @@ dependencies = [
 [[package]]
 name = "relay-quotas"
 version = "22.4.0"
-source = "git+https://github.com/getsentry/relay#f17b293c83ae1344e046760656ca2bb8f201b4b8"
+source = "git+https://github.com/getsentry/relay#d8223d8d03ed4764063855eb3480f22684163d92"
 dependencies = [
  "relay-common",
  "serde",
@@ -2720,7 +2720,7 @@ dependencies = [
 [[package]]
 name = "relay-redis"
 version = "22.4.0"
-source = "git+https://github.com/getsentry/relay#f17b293c83ae1344e046760656ca2bb8f201b4b8"
+source = "git+https://github.com/getsentry/relay#d8223d8d03ed4764063855eb3480f22684163d92"
 dependencies = [
  "failure",
  "serde",
@@ -2729,7 +2729,7 @@ dependencies = [
 [[package]]
 name = "relay-sampling"
 version = "22.4.0"
-source = "git+https://github.com/getsentry/relay#f17b293c83ae1344e046760656ca2bb8f201b4b8"
+source = "git+https://github.com/getsentry/relay#d8223d8d03ed4764063855eb3480f22684163d92"
 dependencies = [
  "rand 0.6.5",
  "rand_pcg",
@@ -2745,7 +2745,7 @@ dependencies = [
 [[package]]
 name = "relay-server"
 version = "22.4.0"
-source = "git+https://github.com/getsentry/relay#f17b293c83ae1344e046760656ca2bb8f201b4b8"
+source = "git+https://github.com/getsentry/relay#d8223d8d03ed4764063855eb3480f22684163d92"
 dependencies = [
  "actix",
  "actix-web",
@@ -2795,7 +2795,7 @@ dependencies = [
 [[package]]
 name = "relay-statsd"
 version = "22.4.0"
-source = "git+https://github.com/getsentry/relay#f17b293c83ae1344e046760656ca2bb8f201b4b8"
+source = "git+https://github.com/getsentry/relay#d8223d8d03ed4764063855eb3480f22684163d92"
 dependencies = [
  "cadence",
  "lazy_static",
@@ -2807,7 +2807,7 @@ dependencies = [
 [[package]]
 name = "relay-system"
 version = "22.4.0"
-source = "git+https://github.com/getsentry/relay#f17b293c83ae1344e046760656ca2bb8f201b4b8"
+source = "git+https://github.com/getsentry/relay#d8223d8d03ed4764063855eb3480f22684163d92"
 dependencies = [
  "actix",
  "failure",
@@ -3117,7 +3117,7 @@ dependencies = [
 
 [[package]]
 name = "sentry-lambda-extension"
-version = "0.1.6"
+version = "0.1.7"
 dependencies = [
  "anyhow",
  "ctrlc",
